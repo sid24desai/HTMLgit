@@ -19,6 +19,10 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnotify4
       - name: Install Publii
         run: |
           wget https://cdn.getpublii.com/Publii-0.45.2.deb
