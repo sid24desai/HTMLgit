@@ -23,17 +23,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libnotify4
-      - name: Install Publii
-        run: |
-          wget https://cdn.getpublii.com/Publii-0.45.2.deb
-          sudo dpkg -i Publii-0.45.2.deb
-      - name: Add Publii to PATH
-        run: |
-          echo 'export PATH="$PATH:/usr/local/bin"' >> $HOME/.bashrc
-          source $HOME/.bashrc
       - name: Build Website
         run: |
-          publii build
+          /opt/Publii/Publii build
       - name: Deploy Website
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -42,3 +34,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           app_location: "build" # Adjust based on your Publii configuration
+
